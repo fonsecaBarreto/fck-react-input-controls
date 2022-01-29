@@ -20,7 +20,7 @@ export const UseStateAdapter =( initial_data: Record<string, any> ): StateAdapte
             clear: () => setData({ ...initial_data })
         },
         errors: { 
-            get: errors, set: setErrors , clear: () => {setErrors({ })},
+            get: errors, set: setErrors, clear: () => {setErrors({ })},
         },
         loading: { 
             get:loading, set: setLoading 

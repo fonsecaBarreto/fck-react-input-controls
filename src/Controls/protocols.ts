@@ -27,6 +27,7 @@ export namespace FCKControls {
         label?: string,
         state: StateAdapter.Handler
         placeHolder?:string,
-        className?:string
+        className?:string,
+        noLabel?: boolean
     }
 }

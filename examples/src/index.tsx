@@ -5,7 +5,7 @@ import FormatingExamples from './formatting-examples'
 import InputControlExamples from './input-control-examples'
 
 export const ExampleApplication = () =>{
-    const [ pageIndex, setPageIndex ] = useState(0)
+    const [ pageIndex, setPageIndex ] = useState(1)
     return (
         <div id="App" className='fck-examples container'>
             <h2> fck-react-input-controls</h2>

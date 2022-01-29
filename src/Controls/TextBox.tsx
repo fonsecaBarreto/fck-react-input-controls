@@ -8,13 +8,13 @@ export enum TextBoxTypes { TEXT="text", VIEW="view", TEXTAREA="textarea",  NUMBE
 export namespace TextBox {
     export interface Params extends FCKControls.Params {
         type: TextBoxTypes,
-        mask?: string
+        mask?: string,
     }
 }
 
-export const TextBox: React.FunctionComponent<TextBox.Params> = ({ name, label, type, placeHolder, state, className, mask }) =>{
+export const TextBox: React.FunctionComponent<TextBox.Params> = ({ name, noLabel,  label, type, placeHolder, state, className, mask }) =>{
     return (
-        <InputWrapper label={label ?? name} error={state.errors.get[name]} className={className}>
+        <InputWrapper label={ noLabel ? undefined : label ?? name } error={state.errors.get[name]} className={className}>
             
             { type == TextBoxTypes.TEXTAREA ?
             <textarea 

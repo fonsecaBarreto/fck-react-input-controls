@@ -9,7 +9,7 @@ export namespace SelectBox {
     }
 }
 
-export const SelectBox: React.FunctionComponent<SelectBox.Params> = ({ name, label, state, list, placeHolder, className }) =>{
+export const SelectBox: React.FunctionComponent<SelectBox.Params> = ({ noLabel, name, label, state, list, placeHolder, className }) =>{
 
     const [ observable, setObservable] = useState<SelectBox.ItemView[]>([])
 
@@ -23,7 +23,7 @@ export const SelectBox: React.FunctionComponent<SelectBox.Params> = ({ name, lab
     }
 
     return (
-        <InputWrapper label={label ?? name} error={state.errors.get[name]} className={className}>  
+        <InputWrapper label={noLabel ? undefined : label ?? name } error={state.errors.get[name]} className={className}>  
             <select 
                 disabled={list.length === 0} 
                 value={ state.data.get[name]?.value ?? ""} 

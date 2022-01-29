@@ -7,9 +7,9 @@ export const FormingExamples = (): JSX.Element =>{
         <h2> &gt; Exemplos de Formatação </h2>
 
         <h3> &gt;&gt;  Formularios </h3>
-        <Forming.FormGrid title="Titulo do formulario" columns={[5,7, 12]}>
+        <Forming.FormGrid title="Titulo do formulario" columns={[]}>
             <Forming.InputWrapper label={"Um Valor Aqui"}> <input type="text" ></input> </Forming.InputWrapper>
-            <Forming.InputWrapper label={"Um Texto aqui"}> <input type="text" ></input> </Forming.InputWrapper>
+            <Forming.InputWrapper> <input type="text" value={"Sem Label"} ></input> </Forming.InputWrapper>
             <Forming.InputWrapper label={"Outro"}> <textarea></textarea> </Forming.InputWrapper>
         </Forming.FormGrid>
 

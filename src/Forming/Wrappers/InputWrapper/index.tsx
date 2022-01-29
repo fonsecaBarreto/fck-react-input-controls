@@ -4,19 +4,19 @@ import './style.css'
 export namespace InputWrapper {
     export type Params = {
         children: React.ReactNode, 
-        label:string, 
-        error?:string, 
         className?:string,
-        w100?: boolean
+        error?:string, 
+        label?:string, 
+        fill?: boolean
     }
 }
 
-export const InputWrapper: React.FunctionComponent<InputWrapper.Params> = ({children, label, error, className, w100=true })=> {
+export const InputWrapper: React.FunctionComponent<InputWrapper.Params> = ({children, label, error, className, fill=true })=> {
     return (
-    <div className={`input-wrapper ${error ? "warning" : ''} ${w100 ? "w100": ""} ${className} `}>
-        <label>{label}</label>
+    <div className={`input-wrapper ${error ? "warning" : ''} ${fill ? "w100": ""} ${className} `}>
+        { label ? <label>{label}</label> : <span/>} 
         {children}
-        {error && <span className="form-error">
+        { error && <span className="form-error">
             {error}
         </span>
         }
