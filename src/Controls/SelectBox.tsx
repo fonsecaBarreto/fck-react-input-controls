@@ -2,35 +2,24 @@ import React, { ChangeEvent, useEffect, useState } from "react"
 import InputWrapper from '../Forming/Wrappers/InputWrapper'
 import { FCKControls } from './protocols'
 
-export type LabelView = {
-    label: string,
-    value: string
-}
-
 export namespace SelectBox {
+    export type ItemView ={ label: string, value: string }
     export interface Params extends FCKControls.Params {
-        list: string[] | LabelView[]
+        list: ItemView[]
     }
 }
 
 export const SelectBox: React.FunctionComponent<SelectBox.Params> = ({ name, label, state, list, placeHolder, className }) =>{
 
-    const [ workList, setWorkList] = useState<LabelView[]>([])
+    const [ observable, setObservable] = useState<SelectBox.ItemView[]>([])
 
     useEffect(()=>{
-        if(!list) throw new Error("Nenhuma Lista foi fornecida");
-        const novo: LabelView[] = list.map((l,i)=>{
-            if( typeof l == "string"){
-                return ({ value: i+"", label: l })
-            }
-            return l;
-        });
-        setWorkList([{ value: "", label: placeHolder ??  "Nenhum Item Selecionado " }, ...novo]);
+        const novo: any[] = list.map((v,i)=> v);
+        setObservable([{ value: "", label: placeHolder ??  "Nenhum Item Selecionado " }, ...novo]);
     },[list])
-
-
+    
     const handleInput = ( e:ChangeEvent<HTMLSelectElement> ) =>{
-        state.data.onInput(name, { value: e.target.value, label: workList[e.target.options.selectedIndex].label }) 
+        state.data.onInput(name, { value: e.target.value, label: observable[e.target.options.selectedIndex].label }) 
     }
 
     return (
@@ -39,7 +28,7 @@ export const SelectBox: React.FunctionComponent<SelectBox.Params> = ({ name, lab
                 disabled={list.length === 0} 
                 value={ state.data.get[name]?.value ?? ""} 
                 onChange={handleInput}>
-                { workList.map((u,i)=><option value={u.value} key={i}>{u.label}</option>) }
+                 { observable.map((u,i)=><option value={u.value} key={i}>{u.label}</option>) }
             </select>
         </InputWrapper>
     )
