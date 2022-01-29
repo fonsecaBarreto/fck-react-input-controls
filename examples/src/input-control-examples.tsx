@@ -16,7 +16,7 @@ export const ControlsExamples = (): JSX.Element =>{
     const state = UseStateAdapter(INITIAL_DATA)
 
     return ( <div> 
-        <h2> Exemplos de Controles </h2>
+        <h2> &gt; Exemplos de Controles" </h2>
 
         <Forming.FormGrid title="" columns={[6,6,12, 12]}>
             <Controls.TextBox placeHolder="Exemplo: 99.999.999/9999-99" mask="99.999.999/9999-99" 
@@ -28,11 +28,7 @@ export const ControlsExamples = (): JSX.Element =>{
             <Controls.TextBox state={state} name={"senha"} type={Controls.TextBoxTypes.PASSWORD}/> 
             <Controls.TextBox state={state} name={"nome"} label="Viewbox" type={Controls.TextBoxTypes.VIEW}/>
             <Controls.TextBox state={state} name={"Textão aqui"} type={Controls.TextBoxTypes.TEXTAREA}/>
-            <Controls.TextBox state={state} name={"Text Area Customiado"} type={Controls.TextBoxTypes.TEXTAREA} className={"custom-text-area-test"} />
-            {JSON.stringify(state.data.get)}
         </Forming.FormGrid>
-
-
     </div>
     )
 }

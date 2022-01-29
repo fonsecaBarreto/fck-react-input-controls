@@ -1,5 +1,4 @@
-import React from "react";
-import { ChangeEvent, useEffect, useState } from "react"
+import React, { ChangeEvent, useEffect, useState } from "react"
 import InputWrapper from '../Forming/Wrappers/InputWrapper'
 import { FCKControls } from './protocols'
 

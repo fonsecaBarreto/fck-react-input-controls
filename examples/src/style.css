@@ -1,0 +1,12 @@
+
+.container{
+    max-width: 800px;
+    margin: auto;
+    border: solid 1px #ddd;
+}
+
+.fck-examples{
+    height: 100%;
+    width: 100%;
+    padding: 24px;
+}
