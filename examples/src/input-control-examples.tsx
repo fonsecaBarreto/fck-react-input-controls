@@ -8,7 +8,9 @@ const INITIAL_DATA = {
     idade: "23",
     endereco: "Rua São Joaquim",
     Numeros: { label: "Seila", value: 2},
-    cpf:""
+    cpf:"",
+    test1:" Text qualquer que nao pode ser alterado por hora",
+    test2: {}
 }
 
 export const ControlsExamples = (): JSX.Element =>{
@@ -25,7 +27,13 @@ export const ControlsExamples = (): JSX.Element =>{
             <Controls.TextBox state={state} name={"idade"} noLabel placeHolder='Idade (Sem a label em cima)' type={Controls.TextBoxTypes.NUMBER}/>
             <Controls.TextBox state={state} name={"senha"} type={Controls.TextBoxTypes.PASSWORD}/> 
             <Controls.TextBox state={state} name={"nome"} label="Viewbox" type={Controls.TextBoxTypes.VIEW}/>
-            <Controls.TextBox state={state} name={"Textão aqui"} type={Controls.TextBoxTypes.TEXTAREA}/>
+            <Controls.TextBox state={state} name={"qualquer"} type={Controls.TextBoxTypes.TEXTAREA}/>
+            
+            <hr></hr>
+
+            <h3> Desabilitados </h3>
+            <Controls.TextBox disabled={true} state={state} label={"Desabilitado forçado"} name={"test1"} type={Controls.TextBoxTypes.TEXT}/>
+            <Controls.SelectBox disabled={true} state={state} label="Desabilitado forçado" name={"test2"} list={[{value:"Algum_id", label:"Nome"},{value: "Ouro id", label: "Outro Nome"}]}  > </Controls.SelectBox>
         </Forming.FormGrid>
     </div>
     )

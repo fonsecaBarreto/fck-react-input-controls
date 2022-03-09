@@ -12,12 +12,13 @@ export namespace TextBox {
     }
 }
 
-export const TextBox: React.FunctionComponent<TextBox.Params> = ({ name, noLabel,  label, type, placeHolder, state, className, mask }) =>{
+export const TextBox: React.FunctionComponent<TextBox.Params> = ({ name, noLabel,  label, type, placeHolder, state, className, mask, disabled=false }) =>{
     return (
         <InputWrapper label={ noLabel ? undefined : label ?? name } error={state.errors.get[name]} className={className}>
             
             { type == TextBoxTypes.TEXTAREA ?
             <textarea 
+                disabled={disabled}
                 rows={4} cols={50}
                 placeholder={placeHolder ?? ''} value={state.data.get?.[name] ?? ""}  
                 onInput={ ( e:ChangeEvent<HTMLTextAreaElement> ) => state.data.onInput(name, e.target.value) } >
@@ -27,10 +28,10 @@ export const TextBox: React.FunctionComponent<TextBox.Params> = ({ name, noLabel
                 <input disabled={true} type={'text'} value={ state.data.get?.[name] ?? "" } ></input>
             :
                 mask ? 
-                <InputMask className="custom-input" type={'text'} placeholder={placeHolder ?? ''} mask={mask} value={state.data.get?.[name] ?? ""} 
+                <InputMask disabled={disabled} className="custom-input" type={'text'} placeholder={placeHolder ?? ''} mask={mask} value={state.data.get?.[name] ?? ""} 
                     onInput={ ( e:ChangeEvent<HTMLInputElement> ) => state.data.onInput(name, e.target.value) }/>
                 :
-                <input type={type} placeholder={placeHolder ?? ''} value={state.data.get?.[name] ?? ""}  
+                <input disabled={disabled} type={type} placeholder={placeHolder ?? ''} value={state.data.get?.[name] ?? ""}  
                 onInput={ ( e:ChangeEvent<HTMLInputElement> ) => state.data.onInput(name, e.target.value) }></input>
             }
         </InputWrapper>
