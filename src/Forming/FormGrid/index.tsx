@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import './style.css'
-import { SiPlatformdotsh } from 'react-icons/si'
-
 
 export type ColumnConfig = { sm: number, lg: number };
 export namespace FormGrid {
@@ -34,7 +32,6 @@ export const FormGrid: React.FunctionComponent<FormGrid.Params> = ({ title, chil
             <section>
                 { 
                     title && <React.Fragment>
-                       { icon ? { icon } :<SiPlatformdotsh/>}
                         <span className="cf-title">  {title || ""}</span>
                     </React.Fragment>
                 }
